@@ -8,7 +8,7 @@ import {
 
 import styles from './styles/index.css'
 import Header from '~/components/header'  // el caracter ~ segun tsconfig.json indica que parte desde App y de ahi me meto en las subcarpetas (en lugar del ../../)
-
+import Footer from '~/components/footer'
 
 
 export function meta() {
@@ -70,6 +70,7 @@ function Document({children}){
       <body>
         <Header />
         {children}
+        <Footer />
 
         <Scripts />
         <LiveReload />
