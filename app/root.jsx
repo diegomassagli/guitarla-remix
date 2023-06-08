@@ -3,7 +3,10 @@ import {
   Links,
   Outlet,
   Scripts,        // evita el flash al recargar
-  LiveReload      // renderiza sin recargar
+  LiveReload,      // renderiza sin recargar
+  useRouteError,
+  isRouteErrorResponse,
+  Link
 } from '@remix-run/react'
 
 import styles from './styles/index.css'
@@ -12,11 +15,13 @@ import Footer from '~/components/footer'
 
 
 export function meta() {
-  return [
-    {charset: 'utf-8'},
-    {title: 'GuitarLA - Remix'},
-    {name: "viewport", content: "width=device-width,initial-scale=1" }    
-  ]
+  return (
+    [
+      {charset: 'utf-8'},
+      {title: 'GuitarLA - Remix'},
+      {name: "viewport", content: "width=device-width,initial-scale=1" }    
+    ]
+  )
 }
 
 
@@ -77,4 +82,21 @@ function Document({children}){
       </body>
     </html>
   )
+}
+
+/** Manejo de Errores */
+
+export function ErrorBoundary() {
+
+  const error = useRouteError()
+  
+  if(isRouteErrorResponse(error)){
+    return (
+      <Document>
+        <p className="error">{error.status} {error.statusText}</p>
+        <Link className='error-enlace' to="/">Tal vez quieras volver a la pagina principal</Link>
+      </Document>
+    )
+  }
+
 }

@@ -1,4 +1,36 @@
 import imagen from '../../public/img/nosotros.jpg'
+import styles from '~/styles/nosotros.css'
+
+export function meta( { matches } ) {
+  let rootMeta = matches[0].meta;
+  let charset = rootMeta.find((m) => m.charset);
+  let viewport = rootMeta.find((m) => m.name);
+  return (
+    [
+      charset,
+      viewport,
+      {title: 'GuitarLA - Sobre Nosotros'},
+      {description: 'Venta de guitarras, blog de musica'}
+    ]
+  )
+}
+
+
+export function links() {  // esto agrega una "hoja de estilo particular para esa pagina" a las generales que ya tenia por defecto
+  return (
+    [
+      {
+        rel: 'stylesheet', 
+        href: styles
+      },
+      {
+        rel: 'preload', 
+        href: imagen, 
+        as: 'image'
+      }    //le indico que cargue la imagen pesada tan pronto como pueda
+    ]
+  )
+}
 
 const Nosotros = () => {
   return (

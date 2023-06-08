@@ -62,6 +62,7 @@ main {
 
 .header .navegacion {
   display: flex;
+  align-items: center;
   gap: 2rem;
   margin-top: 5px;
 }
@@ -73,13 +74,18 @@ main {
 
 .header .navegacion a {
   color: var(--white);
-  text-decoration: none;
   text-transform: uppercase;
+  text-decoration: none;
   font-weight: 900;
   font-size: 1.4rem;
   padding: .5rem;
   transition-property: background-color;
   transition-duration: 300ms;
+}
+
+.header .navegacion img {
+  width: 3rem;
+
 }
 
 .header .navegacion a:hover,
@@ -122,13 +128,47 @@ main {
   font-weight: 700;  
 }
 
+.footer .navegacion a:last-of-type {
+  display: none;
+}
+
 
 .footer .copyright {
   text-align: center;
 }
 
+.error,
+.error-enlace {
+  font-size:  2.4rem;
+  text-align: center;
+  margin-top: 5rem;
+}
 
+.error-enlace {
+  display: block;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 1.8rem;
+}
 
+.enlace {
+  margin-top: 2rem;
+  display: block;
+  background-color: var(--black);
+  color: var(--white);
+  text-decoration: none;
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+  transition-property: background-color;
+  transition-duration: 300ms;
+}
+
+.enlace:hover {
+  background-color: var(--primary);
+}
 
 
 
