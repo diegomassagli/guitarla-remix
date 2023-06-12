@@ -5,7 +5,7 @@
 //   return {}                                                 // ideal para cargar informacion desde apis porque se ejecuta en el servidor
 // }
 
-import { useLoaderData, Outlet } from '@remix-run/react'
+import { useLoaderData, Outlet, useOutletContext } from '@remix-run/react'
 import { getGuitarras } from '~/models/guitarras.server'
 import styles from '~/styles/guitarras.css'
 import ListadoGuitarras from '../components/listado-guitarras'
@@ -34,8 +34,7 @@ export async function loader() {
 }
 
 
-const Tienda = () => {
-  
+const Tienda = () => {  
   const guitarras = useLoaderData()
 
   return (
@@ -44,7 +43,9 @@ const Tienda = () => {
         guitarras={guitarras}
       />
 
-      <Outlet />
+      <Outlet 
+        context={useOutletContext()}  // esta es una forma de pasar la informacion al hijo
+      />
     </main>
   )
 }

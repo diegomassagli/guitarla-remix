@@ -33,6 +33,7 @@ export function links() {  // esto agrega una "hoja de estilo particular para es
 }
 
 const Nosotros = () => {
+  
   return (
     <main className="contenedor nosotros">
       <h2 className="heading">Nosotros</h2>
