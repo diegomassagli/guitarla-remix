@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import {
-  Meta,
+  Meta,           // lo importo para renderizar en el document o layuout este meta y se importa de react porque es para el Cliente
   Links,
   Outlet,
   Scripts,        // evita el flash al recargar
@@ -24,9 +24,6 @@ export function meta() {
     ]
   )
 }
-
-
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet"></link>
 
 
 export function links() {

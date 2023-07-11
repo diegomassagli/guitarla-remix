@@ -18,7 +18,7 @@ export async function loader({ params }) {
 }
 
 
-export function meta({  data, matches }) {  /* el data es algo de remix y el segundo es de strapi*/
+export function meta({  data, matches }) {  
   let rootMeta = matches[0].meta;
   let viewport = rootMeta.find((m) => m.name);
 
@@ -35,7 +35,7 @@ export function meta({  data, matches }) {  /* el data es algo de remix y el seg
   return [
     {
       viewport,
-      title: `GuitarLA - ${data.data[0].attributes.nombre}`,
+      title: `GuitarLA - ${data.data[0].attributes.nombre}`, /* el data es algo de remix y el segundo data es de strapi, eso si hago data.data*/
       description: `Guitarras, venta de guitarras, guitarra ${data.data[0].attributes.nombre}`
     }
   ]
