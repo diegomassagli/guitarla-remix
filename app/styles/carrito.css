@@ -33,7 +33,7 @@
 }
 
 .select {
-  all: unset;
+  all: unset;   /* elimina todo los estilos creados por defecto */
   border: 1px solid #cfcfcf;
   text-align: center;
   width: 100%;

@@ -72,8 +72,8 @@ function Carrito() {
                     <button 
                       type="button" 
                       className='btn_eliminar'
-                      onClick={() => eliminarGuitarra(producto.id)}>X</button>
-                  </div>
+                      onClick={() => eliminarGuitarra(producto.id)}>X</button>  
+                  </div>  
                 ))
               )}
             </div>

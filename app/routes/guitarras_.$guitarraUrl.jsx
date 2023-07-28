@@ -53,8 +53,7 @@ export function links() {
 
 function Guitarra() {
   const data = useOutletContext()  // son dos formas distintas de extraer la info
-  console.log(data)
-
+  
   const [ cantidad, setCantidad ] = useState(0);
   const guitarra = useLoaderData()
   const { nombre, descripcion, imagen, precio } = guitarra.data[0].attributes

@@ -57,11 +57,13 @@ export function links() {
 
 export default function App() {
 
-  const carritoLS = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('carrito')) ?? [] : null
-  const [ carrito, setCarrito ] = useState(carritoLS)
+// si no funciona probar este codigo: const carritoLS = typeof windows !== 'undefined' && JSON.parse(localStorage.getItem('carrito')) || [] 
+
+  const carritoLS = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('carrito')) ?? [] : null  // aca como estoy previniendo errores para no perder carritos, y lo hago por fuera del UseEffect tengo que buscar la manera de saber si etoy en el servidor o no por es el typeof windows que es una forma de preguntar por "el navegador"
+  const [ carrito, setCarrito ] = useState(carritoLS)                                                         // esto puede generar error de hidratacion porque el servidor no reconoce este cambio
 
 
-  useEffect( () => {
+  useEffect( () => {                                                   // esto fuerza que se ejecute 1 sola vez y en en Cliente ! sino lo pongo en useEffect intenta hacerlo en el servidor tambien
     localStorage.setItem('carrito', JSON.stringify(carrito))
   }, [carrito])
 
@@ -69,7 +71,7 @@ export default function App() {
   const agregarCarrito = guitarra => {
     if (carrito.some(guitarraState => guitarraState.id === guitarra.id)) {  //some es un array method y returno true si al menos 1 elemento cumple la condicion      
       // iterar sobre el arreglo e identificar el elemento duplicado...
-      const carritoActualizado = carrito.map( guitarraState => {
+      const carritoActualizado = carrito.map( guitarraState => {   // recordar que carrito.map devuelve un arreglo nuevo no toca el original
         if (guitarraState.id === guitarra.id) {
           // reescribir la cantidad
           guitarraState.cantidad = guitarra.cantidad  // tambien puedo hacer guitarraState.cantidad += guitarra.cantidad  (en ese caso la agrega)
@@ -104,9 +106,9 @@ export default function App() {
   return (    
     <Document>
       <Outlet 
-        context={{
-          agregarCarrito,
-          carrito,
+        context={{                       // agregando este context es la forma de pasar info, fx, etc a los componentes
+          agregarCarrito,                // tener en cuenta que este context funciona en el primer nivel de routes y no en las anidadas
+          carrito,                       // hay que volver a pasarlo con    context={useOutletContext()}
           actualizarCantidad,
           eliminarGuitarra
         }}
